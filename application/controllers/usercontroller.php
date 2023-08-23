@@ -31,7 +31,7 @@ class UserController extends CI_Controller
 			$this->form_validation->set_rules('mobile', 'Mobile Number', 'trim|required|numeric'); // Add validation rule for mobile number
 
 			if ($this->form_validation->run() !== FALSE) {
-				$result = $this->usermodel->create_user(
+				$result = $this->User_model->create_user(
 					$this->input->post('name'),
 					$this->input->post('email'),
 					$this->input->post('gender'),
@@ -61,7 +61,7 @@ class UserController extends CI_Controller
 			$this->form_validation->set_rules('mobile', 'Mobile Number', 'trim|required|numeric');
 
 			if ($this->form_validation->run() !== FALSE) {
-				$result = $this->usermodel->update_user(
+				$result = $this->User_model->update_user(
 					$_id,
 					$this->input->post('name'),
 					$this->input->post('email'),
