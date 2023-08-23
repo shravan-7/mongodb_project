@@ -2,9 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
-* Author: https://roytuts.com
-*/
+
 
 class UserModel extends CI_model {
 	
