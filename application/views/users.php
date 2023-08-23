@@ -56,54 +56,37 @@
 		</div>
 
 		<div id="body">
-			<?php
-			if ($users) {
-			?>
-				<table class="datatable">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Gender</th>
-							<th>Mobile</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-						$i = 0;
-						foreach ($users as $user) {
-							$col_class = ($i % 2 == 0 ? 'odd_col' : 'even_col');
-							$i++;
-						?>
-							<tr class="<?php echo $col_class; ?>">
-								<td>
-									<?php echo isset($user->name) ? $user->name : 'N/A'; ?>
-								</td>
-								<td>
-									<?php echo isset($user->email) ? $user->email : 'N/A'; ?>
-								</td>
-								<td>
-									<?php echo isset($user->gender) ? $user->gender : 'N/A'; ?>
-								</td>
-								<td>
-									<?php echo isset($user->mobile) ? $user->mobile : 'N/A'; ?>
-								</td>
-								<td>
-									<a href="<?= site_url('/usercontroller/update/' . $user->_id) ?>" class="btn btn-primary">Update</a>
-									<a href="<?= site_url('/usercontroller/delete/' . $user->_id) ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete this record?')">Delete</a>
-								</td>
-							</tr>
-						<?php
-						}
-						?>
-					</tbody>
-				</table>
-			<?php
-			} else {
-				echo '<div style="color:red;"><p>No Record Found!</p></div>';
-			}
-			?>
+		<table class="datatable">
+		<thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+	<?php if (!empty($users)) : ?>
+            <?php foreach ($users as $user) : ?>
+                <tr>
+                    <td><?php echo isset($user->name) ? $user->name : 'N/A'; ?></td>
+                    <td><?php echo isset($user->email) ? $user->email : 'N/A'; ?></td>
+                    <td><?php echo isset($user->gender) ? $user->gender : 'N/A'; ?></td>
+                    <td><?php echo isset($user->mobile) ? $user->mobile : 'N/A'; ?></td>
+                    <td>
+                        <a href="<?= site_url('/usercontroller/update/' . $user->_id) ?>" class="btn btn-primary">Update</a>
+                        <a href="<?= site_url('/usercontroller/delete/' . $user->_id) ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete this record?')">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <tr>
+                <td colspan="5">No records found.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
 		</div>
 	</div>
 
