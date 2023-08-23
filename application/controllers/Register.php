@@ -32,12 +32,12 @@ class Register extends CI_Controller {
             $username = $this->input->post('username');
             $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
     
-            if ($this->User_model->create_user($name, $email, $username, $password)) {
+            if ($this->User_model->register_user($name, $email, $username, $password)) {
                 // Registration successful, redirect to login page
-                redirect('/home');
+                redirect('login');
             } else {
                 // Registration failed, handle the error
-                redirect('/about');
+                redirect('about');
             }
         }
     }
