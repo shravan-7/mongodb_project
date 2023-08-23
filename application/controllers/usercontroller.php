@@ -14,13 +14,20 @@ class UserController extends CI_Controller
 	}
 
 	function index()
-	{
-		$data['users'] = $this->User_model->get_user_list();
+{
+    $userCursor = $this->User_model->get_user_list();
 
-		$this->load->view('templates/header');
-		$this->load->view('users', $data);
-		$this->load->view('templates/footer');
-	}
+    $users = $userCursor->toArray(); // Convert cursor to an array
+
+    $data['users'] = $users;
+
+    $this->load->view('templates/header');
+    $this->load->view('users', $data);
+    $this->load->view('templates/footer');
+}
+
+
+
 
 	public function create()
 	{
@@ -31,7 +38,7 @@ class UserController extends CI_Controller
 			$this->form_validation->set_rules('mobile', 'Mobile Number', 'trim|required|numeric'); // Add validation rule for mobile number
 
 			if ($this->form_validation->run() !== FALSE) {
-				$result = $this->usermodel->create_user(
+				$result = $this->User_model->create_user(
 					$this->input->post('name'),
 					$this->input->post('email'),
 					$this->input->post('gender'),
@@ -61,7 +68,7 @@ class UserController extends CI_Controller
 			$this->form_validation->set_rules('mobile', 'Mobile Number', 'trim|required|numeric');
 
 			if ($this->form_validation->run() !== FALSE) {
-				$result = $this->usermodel->update_user(
+				$result = $this->User_model->update_user(
 					$_id,
 					$this->input->post('name'),
 					$this->input->post('email'),

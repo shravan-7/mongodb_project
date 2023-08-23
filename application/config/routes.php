@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-$route['default_controller'] = 'Login';
+$route['default_controller'] = 'usercontroller';
 $route['users/login_form'] = 'users/login_form';
 $route['login'] = 'Login';
 $route['register'] = 'register';
