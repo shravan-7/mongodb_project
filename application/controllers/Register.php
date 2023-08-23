@@ -11,7 +11,12 @@ class Register extends CI_Controller {
 
     public function index() {
         // Load your registration form view here
+      
+        
+		$this->load->view('templates/header');
         $this->load->view('register_form');
+        $this->load->view('templates/footer');
+
     }
 
     public function register_user() {

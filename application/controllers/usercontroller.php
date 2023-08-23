@@ -1,11 +1,13 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class UserController extends CI_Controller {
+class UserController extends CI_Controller
+{
 
-	function __construct() {
+	function __construct()
+	{
 		parent::__construct();
 		$this->load->model('User_model');
 		$this->load->library('form_validation'); // Load the form_validation library
@@ -20,9 +22,10 @@ class UserController extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function create() {
+	public function create()
+	{
 		if ($this->input->post('submit')) {
-						$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
+			$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|valid_email|required');
 			$this->form_validation->set_rules('gender', 'Gender', 'required'); // Add validation rule for gender
 			$this->form_validation->set_rules('mobile', 'Mobile Number', 'trim|required|numeric'); // Add validation rule for mobile number
@@ -49,7 +52,8 @@ class UserController extends CI_Controller {
 		}
 	}
 
-	function update($_id) {
+	function update($_id)
+	{
 		if ($this->input->post('submit')) {
 			$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|valid_email|required');
@@ -81,11 +85,11 @@ class UserController extends CI_Controller {
 		}
 	}
 
-	function delete($_id) {
+	function delete($_id)
+	{
 		if ($_id) {
 			$this->User_model->delete_user($_id);
 		}
 		redirect('/');
 	}
-
 }
