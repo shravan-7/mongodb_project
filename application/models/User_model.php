@@ -103,5 +103,22 @@ class User_model extends CI_model {
 			show_error('Error while deleting users: ' . $ex->getMessage(), 500);
 		}
 	}
+	public function get_user_by_username($username) {
+        try {
+            $filter = ['username' => $username];
+            $query = new MongoDB\Driver\Query($filter);
+
+            $result = $this->conn->executeQuery($this->database.'.'.$this->collection, $query);
+
+            foreach ($result as $user) {
+                return $user;
+            }
+
+            return null;
+        } catch (MongoDB\Driver\Exception\RuntimeException $ex) {
+            show_error('Error while fetching user: ' . $ex->getMessage(), 500);
+        }
+    }
+
 	
 }

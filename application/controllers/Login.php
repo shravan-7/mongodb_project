@@ -30,10 +30,13 @@ class Login extends CI_Controller {
             $user = $this->user_model->get_user_by_username($username);
 
             if ($user && password_verify($password, $user->password)) {
-                // Login successful, set session or JWT token
                 // Redirect to user dashboard or wherever you want
+                $this->session->set_userdata('user_id', $user->_id);
+                redirect("home");
             } else {
                 // Login failed, handle the error
+                $this->session->set_flashdata('login_error', 'Wrong Username or Password. Please try again.');
+                redirect("login");
             }
         }
     }
