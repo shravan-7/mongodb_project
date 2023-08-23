@@ -14,8 +14,14 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="text-center">Login</h2>
+                            <?php if ($this->session->flashdata('login_error')): ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?= $this->session->flashdata('login_error') ?>
+                                </div>
+                            <?php endif; ?>
 
-                        <?php echo validation_errors(); ?>
+                        <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
+
 
                         <?php echo form_open('login/login_user'); ?>
 
