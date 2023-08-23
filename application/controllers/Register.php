@@ -5,7 +5,7 @@ class Register extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('user_model');
+        $this->load->model('User_model');
         $this->load->library('form_validation');
     }
 
@@ -26,26 +26,25 @@ class Register extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
         $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|matches[password]');
-
+    
         if ($this->form_validation->run() === FALSE) {
             // Validation failed, reload the registration form with errors
             $this->load->view('register_form');
         } else {
             // Validation successful, proceed with registration
-            $data = array(
-                'name' => $this->input->post('name'),
-                'email' => $this->input->post('email'),
-                'username' => $this->input->post('username'),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-                // Add other user data as needed
-            );
-
-            if ($this->user_model->insert_user($data)) {
+            $name = $this->input->post('name');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+    
+            if ($this->User_model->register_user($name, $email, $username, $password)) {
                 // Registration successful, redirect to login page
                 redirect('login');
             } else {
                 // Registration failed, handle the error
+                redirect('about');
             }
         }
     }
+    
 }

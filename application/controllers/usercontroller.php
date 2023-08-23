@@ -2,19 +2,20 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
 class UserController extends CI_Controller
 {
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('usermodel');
+		$this->load->model('User_model');
 		$this->load->library('form_validation'); // Load the form_validation library
 	}
 
 	function index()
 	{
-		$data['users'] = $this->usermodel->get_user_list();
+		$data['users'] = $this->User_model->get_user_list();
 
 		$this->load->view('templates/header');
 		$this->load->view('users', $data);
@@ -23,9 +24,7 @@ class UserController extends CI_Controller
 
 	public function create()
 	{
-
 		if ($this->input->post('submit')) {
-			// Set form validation rules
 			$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|valid_email|required');
 			$this->form_validation->set_rules('gender', 'Gender', 'required'); // Add validation rule for gender
@@ -53,9 +52,8 @@ class UserController extends CI_Controller
 		}
 	}
 
-	public function update($_id)
+	function update($_id)
 	{
-
 		if ($this->input->post('submit')) {
 			$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|valid_email|required');
@@ -82,7 +80,7 @@ class UserController extends CI_Controller
 				$this->load->view('user_update', $data);
 			}
 		} else {
-			$data['user'] = $this->usermodel->get_user($_id);
+			$data['user'] = $this->User_model->get_user($_id);
 			$this->load->view('user_update', $data);
 		}
 	}
@@ -90,7 +88,7 @@ class UserController extends CI_Controller
 	function delete($_id)
 	{
 		if ($_id) {
-			$this->usermodel->delete_user($_id);
+			$this->User_model->delete_user($_id);
 		}
 		redirect('/');
 	}
