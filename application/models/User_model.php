@@ -1,47 +1,36 @@
 <?php
-class user_model extends CI_Model
+defined('BASEPATH') or exit('No direct script access allowed');
+
+
+class User_model extends CI_Model
 {
-    public function register($enc_password)
+    private $collection = 'users1'; // MongoDB collection name
+
+    public function __construct()
     {
-        $data = array(
-            'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'username' => $this->input->post('username'),
-            'password' => $enc_password,
-            'zipcode' => $this->input->post('zipcode'),
-        );
-        //insert user
-        return $this->db->insert('users', $data);
+        parent::__construct();
     }
-    public function login($username, $password){
-        //validate
-        $this->db->where('username', $username);
-        $this->db->where('password', $password);
-        $result=$this->db->get('users');
-        if($result->num_rows() == 1){
-            return $result->row(0)->id;
-        }
-        else{
-            return false;
-        }
-        
-    }
-    public function check_username_exists($username)
+
+    // Insert a new user record
+    public function insert_user($data)
     {
-        $query = $this->db->get_where('users', array('username' => $username));
-        if (empty($query->row_array())) {
-            return true;
-        } else {
-            return false;
-        }
+        // Load the MongoDB library here in the model
+        $this->load->library('mongodb');
+
+        // Insert the data into the specified collection
+        $this->mongo_db->insert($this->collection, $data);
+
+        // Check if the insert was successful (you may need to customize this logic)
+        return $this->mongo_db->affected_rows() > 0;
     }
-    public function check_email_exists($email)
+
+
+    // Get user by username
+    public function get_user_by_username($username)
     {
-        $query = $this->db->get_where('users', array('email' => $email));
-        if (empty($query->row_array())) {
-            return true;
-        } else {
-            return false;
-        }
+        // Load the MongoDB library here in the model
+        $this->load->library('mongodb');
+
+        return $this->mongodb->where('username', $username)->get($this->collection)->row();
     }
 }
