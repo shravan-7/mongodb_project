@@ -14,13 +14,20 @@ class UserController extends CI_Controller
 	}
 
 	function index()
-	{
-		$data['users'] = $this->User_model->get_user_list();
+{
+    $userCursor = $this->User_model->get_user_list();
 
-		$this->load->view('templates/header');
-		$this->load->view('users', $data);
-		$this->load->view('templates/footer');
-	}
+    $users = $userCursor->toArray(); // Convert cursor to an array
+
+    $data['users'] = $users;
+
+    $this->load->view('templates/header');
+    $this->load->view('users', $data);
+    $this->load->view('templates/footer');
+}
+
+
+
 
 	public function create()
 	{

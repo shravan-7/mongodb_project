@@ -1,9 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-defined('BASEPATH') or exit('No direct script access allowed');
-
-
 
 class User_model extends CI_model
 {
@@ -19,21 +16,19 @@ class User_model extends CI_model
         $this->conn = $this->mongodb->getConn();
     }
 
-    function get_user_list()
-    {
-        try {
-            $projection = ['name', 'email', 'gender', 'mobile'];
+	function get_user_list() {
+		try {
+			$filter = [];
+			$query = new MongoDB\Driver\Query($filter);
+			
+			$result = $this->conn->executeQuery($this->database.'.'.$this->collection, $query);
 
-            $filter = [];
-            $query = new MongoDB\Driver\Query($filter, ['projection' => $projection]);
+			return $result;
+		} catch(MongoDB\Driver\Exception\RuntimeException $ex) {
+			show_error('Error while fetching users: ' . $ex->getMessage(), 500);
+		}
+	}
 
-            $result = $this->conn->executeQuery($this->database . '.' . $this->collection, $query);
-
-            return $result;
-        } catch (MongoDB\Driver\Exception\RuntimeException $ex) {
-            show_error('Error while fetching users: ' . $ex->getMessage(), 500);
-        }
-    }
 
     function get_user($_id)
     {
