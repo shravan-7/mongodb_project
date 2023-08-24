@@ -40,9 +40,18 @@ class Login extends CI_Controller
             // Retrieve user from MongoDB
             $user = $this->user_model->get_user_by_username($username);
 
+
             if ($user && password_verify($password, $user->password)) {
                 // Set user session and redirect to user controller
                 $this->session->set_userdata('user_id', $user->_id);
+
+
+
+
+
+
+                $this->session->set_flashdata('user_loggedin', 'You are now logged in');
+
                 redirect("/");
             } else {
                 // Login failed, handle the error
@@ -50,5 +59,17 @@ class Login extends CI_Controller
                 redirect("login");
             }
         }
+    }
+    public function logout()
+    {
+        // Unset user data
+        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('username');
+
+        // Set message
+        $this->session->set_flashdata('user_loggedout', 'You are now logged out');
+
+        redirect('login');
     }
 }

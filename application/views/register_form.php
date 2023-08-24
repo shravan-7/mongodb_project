@@ -19,12 +19,12 @@
 
                         <?php echo form_open('register/register_user'); ?>
                         <?php
-                            if ($this->session->flashdata('error_message')) {
-                                echo '<div id="flash-message" class="alert alert-danger" role="alert">' . $this->session->flashdata('error_message') . '</div>';
-                            }
-                            ?>
+                        if ($this->session->flashdata('error_message')) {
+                            echo '<div id="flash-message" class="alert alert-danger" role="alert">' . $this->session->flashdata('error_message') . '</div>';
+                        }
+                        ?>
                         <script>
-    // Automatically hide the flash message after 5 seconds (5000 milliseconds)
+                            // Automatically hide the flash message after 5 seconds (5000 milliseconds)
                             setTimeout(function() {
                                 var flashMessage = document.getElementById('flash-message');
                                 if (flashMessage) {
@@ -46,6 +46,7 @@
                         <div class="form-group mb-4">
                             <label for="username">Username:</label>
                             <input type="text" id="username" name="username" class="form-control" value="<?php echo set_value('username'); ?>">
+
                         </div>
 
                         <div class="form-group mb-4">

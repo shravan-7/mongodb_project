@@ -4,6 +4,25 @@
         <title>User</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
     </head>
+    <script>
+        // Automatically close flash messages after 3 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert').forEach(function(alert) {
+                alert.style.transition = 'opacity 0.5s, visibility 0.5s';
+                alert.style.opacity = '0';
+                alert.style.visibility = 'hidden';
+                alert.parentNode.removeChild(alert);
+            });
+        }, 3000); // Adjust the time delay (in milliseconds) as needed
+    </script>
+    <style>
+        .alert {
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+    </style>
+
+
+
 
     <body>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -25,13 +44,15 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <?php if (!$this->session->userdata('logged_in')) : ?>
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>login">LOGIN</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>register">REGISTER</a></li>
+                        <?php endif; ?>
+                        <?php if ($this->session->userdata('logged_in')) : ?>
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>login">LOGOUT</a></li>
 
-                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>login">LOGIN</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>register">REGISTER</a></li>
+                        <?php endif; ?>
 
-
-
-                        <!-- <li class="nav-item"><a class="nav-link active" href="<?php echo base_url(); ?>users/logout">Logout</a></li> -->
 
                     </ul>
 
@@ -40,20 +61,18 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container mt-4">
             <!-- flash messages -->
-            <!-- <?php if ($this->session->flashdata('user_registered')) : ?>
-            <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_registered') . '</p>'; ?>
-        <?php endif; ?>
+            <?php if ($this->session->flashdata('user_registered')) : ?>
+                <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_registered') . '</p>'; ?>
+            <?php endif; ?>
 
 
 
-        <?php if ($this->session->flashdata('login_failed')) : ?>
-            <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '</p>'; ?>
-        <?php endif; ?>
-        <?php if ($this->session->flashdata('user_loggedin')) : ?>
-            <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedin') . '</p>'; ?>
-        <?php endif; ?>
-        <?php if ($this->session->flashdata('user_loggedout')) : ?>
-            <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedout') . '</p>'; ?>
-        <?php endif; ?> -->
+
+            <?php if ($this->session->flashdata('user_loggedin')) : ?>
+                <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedin') . '</p>'; ?>
+            <?php endif; ?>
+            <?php if ($this->session->flashdata('user_loggedout')) : ?>
+                <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedout') . '</p>'; ?>
+            <?php endif; ?>
