@@ -7,7 +7,7 @@ $route['users/login_form'] = 'users/login_form';
 $route['login'] = 'Login';
 $route['register'] = 'register';
 
-$route['(:any)'] = 'pages/view/$1';
+//$route['(:any)'] = 'pages/view/$1';
 //$route['home'] = 'pages/view/home';
 //$route['about'] = 'views/pages/about';
 $route['404_override'] = '';

@@ -29,18 +29,21 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() === FALSE) {
             // Validation failed, reload the login form with errors
+            $this->load->view('templates/header');
             $this->load->view('login_form');
+            $this->load->view('templates/footer');
         } else {
             // Validation successful, proceed with login
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
+            // Retrieve user from MongoDB
             $user = $this->user_model->get_user_by_username($username);
 
             if ($user && password_verify($password, $user->password)) {
-                // Redirect to user dashboard or wherever you want
+                // Set user session and redirect to user controller
                 $this->session->set_userdata('user_id', $user->_id);
-                redirect("home");
+                redirect("usercontroller");
             } else {
                 // Login failed, handle the error
                 $this->session->set_flashdata('login_error', 'Wrong Username or Password. Please try again.');
