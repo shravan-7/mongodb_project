@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary col-12 mt-2">Register</button>
+                            <button type="submit" class="btn btn-primary btn-lg col-12 mt-2">Register</button>
                         </div>
 
                         <p class="text-center mt-3">Already have an account? <a href="<?php echo base_url(); ?>login">Login here</a></p>

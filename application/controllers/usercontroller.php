@@ -15,6 +15,9 @@ class UserController extends CI_Controller
 
 	function index()
 	{
+		if (!$this->session->userdata('user_id')) {
+			redirect('login');
+		}
 		$userCursor = $this->User_model->get_user_list();
 
 		$users = $userCursor->toArray(); // Convert cursor to an array
@@ -31,6 +34,9 @@ class UserController extends CI_Controller
 
 	public function create()
 	{
+		if (!$this->session->userdata('user_id')) {
+			redirect('login');
+		}
 		if ($this->input->post('submit')) {
 			$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|valid_email|required');
@@ -65,8 +71,11 @@ class UserController extends CI_Controller
 		}
 	}
 
-	function update($_id)
+	public function update($_id)
 	{
+		if (!$this->session->userdata('user_id')) {
+			redirect('login');
+		}
 		if ($this->input->post('submit')) {
 			$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|valid_email|required');
@@ -104,7 +113,7 @@ class UserController extends CI_Controller
 		}
 	}
 
-	function delete($_id)
+	public function delete($_id)
 	{
 		if ($_id) {
 			$this->User_model->delete_user($_id);
