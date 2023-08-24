@@ -42,9 +42,14 @@ class Register extends CI_Controller
 
             if ($this->User_model->is_username_taken($username)) {
                 $this->session->set_flashdata('error_message', 'Username is already taken.');
+                $this->load->view('templates/header');
                 $this->load->view('register_form');
+                $this->load->view('templates/footer');
             } elseif ($this->User_model->is_email_taken($email)) {
                 $this->session->set_flashdata('error_message', 'Email is already taken.');
+                $this->load->view('templates/header');
+                $this->load->view('register_form');
+                $this->load->view('templates/footer');
             } else {
                 $name = $this->input->post('name');
                 $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);

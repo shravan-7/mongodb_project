@@ -52,7 +52,7 @@ class Login extends CI_Controller
 
                 $this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
-                redirect("/");
+                redirect("usercontroller/index");
             } else {
                 // Login failed, handle the error
                 $this->session->set_flashdata('login_error', 'Wrong Username or Password. Please try again.');
@@ -63,7 +63,6 @@ class Login extends CI_Controller
     public function logout()
     {
         // Unset user data
-        $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('username');
 
