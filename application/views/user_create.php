@@ -6,7 +6,7 @@
     <title>Create User</title>
 
     <!-- Include the Bootstrap CSS link -->
-    <link rel="stylesheet" <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 
     <style>
         /* Center content vertically and horizontally */
@@ -46,31 +46,31 @@
                             echo form_open($this->uri->uri_string(), $attributes);
                             ?>
 
-                            <div class="mb-3">
+                            <div class="form-group mb-4">
                                 <label for="name" class="form-label">Full Name</label>
-                                <input type="text" name="name" class="form-control-custom" value="<?php echo set_value('name'); ?>" required>
+                                <input type="text" name="name" class="form-control" value="<?php echo set_value('name'); ?>" required>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="form-group mb-4">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" name="email" class="form-control-custom" value="<?php echo set_value('email'); ?>" required>
+                                <input type="email" name="email" class="form-control" value="<?php echo set_value('email'); ?>" required>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="form-group mb-4">
                                 <label for="gender" class="form-label">Gender</label>
-                                <select name="gender" class="form-control-custom" required>
+                                <select name="gender" class="form-control" required>
                                     <option value="male" <?php echo set_select('gender', 'male'); ?>>Male</option>
                                     <option value="female" <?php echo set_select('gender', 'female'); ?>>Female</option>
                                     <option value="other" <?php echo set_select('gender', 'other'); ?>>Other</option>
                                 </select>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="form-group mb-4">
                                 <label for="mobile" class="form-label">Mobile Number</label>
-                                <input type="text" name="mobile" class="form-control-custom" value="<?php echo set_value('mobile'); ?>" required>
+                                <input type="text" name="mobile" class="form-control" value="<?php echo set_value('mobile'); ?>" required>
                             </div>
 
-                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div class="mb-4 d-flex justify-content-between align-items-center">
                                 <input type="submit" name="submit" value="Submit" class="btn btn-success col-4" />
                                 <a href="<?php echo base_url(); ?>" class="btn btn-primary col-4 ">Back to Users</a>
                             </div>

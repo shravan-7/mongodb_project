@@ -19,33 +19,33 @@
 
                         <?php echo form_open('register/register_user'); ?>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="name">Your Name:</label>
                             <input type="text" id="name" name="name" class="form-control" value="<?php echo set_value('name'); ?>">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="email">Your Email:</label>
                             <input type="email" id="email" name="email" class="form-control" value="<?php echo set_value('email'); ?>">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="username">Username:</label>
                             <input type="text" id="username" name="username" class="form-control" value="<?php echo set_value('username'); ?>">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="password">Password:</label>
                             <input type="password" id="password" name="password" class="form-control">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="confirm_password">Confirm Password:</label>
                             <input type="password" id="confirm_password" name="confirm_password" class="form-control">
                         </div>
 
-                        <div class="text-center"> 
-                            <button type="submit" class="btn btn-primary col-12 mt-3" >Register</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary col-12 mt-2">Register</button>
                         </div>
 
                         <p class="text-center mt-3">Already have an account? <a href="<?php echo base_url(); ?>login">Login here</a></p>
