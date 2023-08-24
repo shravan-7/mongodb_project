@@ -27,12 +27,12 @@
     <body>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<?php echo base_url(); ?>">USER</a>
+                <a class="navbar-brand" href="<?php echo base_url('usercontroller/index'); ?>">USER</a>
 
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo base_url(); ?>">HOME
+                            <a class="nav-link" href="<?php echo base_url('usercontroller/index'); ?>">HOME
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
@@ -48,7 +48,7 @@
                             <li class="nav-item"><a class="nav-link" href="<?php echo base_url('login'); ?>">LOGIN</a></li>
                             <li class="nav-item"><a class="nav-link" href="<?php echo base_url('register'); ?>">REGISTER</a></li>
                         <?php endif; ?>
-                        
+
                         <?php if ($this->session->userdata('user_id')) : ?>
                             <li class="nav-item"><a class="nav-link" href="<?php echo base_url('login/logout'); ?>">LOGOUT</a></li>
                         <?php endif; ?>
