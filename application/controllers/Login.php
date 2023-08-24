@@ -43,7 +43,7 @@ class Login extends CI_Controller
             if ($user && password_verify($password, $user->password)) {
                 // Set user session and redirect to user controller
                 $this->session->set_userdata('user_id', $user->_id);
-                redirect("usercontroller");
+                redirect("/");
             } else {
                 // Login failed, handle the error
                 $this->session->set_flashdata('login_error', 'Wrong Username or Password. Please try again.');

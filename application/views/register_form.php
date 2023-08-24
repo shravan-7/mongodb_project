@@ -15,9 +15,23 @@
                     <div class="card-body">
                         <h2 class="text-center">Create an account</h2>
 
-                        <?php echo validation_errors(); ?>
+                        <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
                         <?php echo form_open('register/register_user'); ?>
+                        <?php
+                            if ($this->session->flashdata('error_message')) {
+                                echo '<div id="flash-message" class="alert alert-danger" role="alert">' . $this->session->flashdata('error_message') . '</div>';
+                            }
+                            ?>
+                        <script>
+    // Automatically hide the flash message after 5 seconds (5000 milliseconds)
+                            setTimeout(function() {
+                                var flashMessage = document.getElementById('flash-message');
+                                if (flashMessage) {
+                                    flashMessage.style.display = 'none';
+                                }
+                            }, 5000);
+                        </script>
 
                         <div class="form-group mb-4">
                             <label for="name">Your Name:</label>
