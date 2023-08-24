@@ -25,18 +25,18 @@
 
                         <?php echo form_open('login/login_user'); ?>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="username">Username:</label>
                             <input type="text" id="username" name="username" class="form-control" value="<?php echo set_value('username'); ?>">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="password">Password:</label>
                             <input type="password" id="password" name="password" class="form-control">
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-lg btn-primary col-12 mt-3">Login</button>
+                            <button type="submit" class="btn btn-lg btn-primary col-12 mt-2">Login</button>
                         </div>
 
                         <p class="text-center mt-3">Don't have an account? <a href="<?php echo base_url(); ?>register">Sign up here</a></p>
