@@ -6,6 +6,7 @@ $route['default_controller'] = 'usercontroller';
 $route['users/login_form'] = 'users/login_form';
 $route['login'] = 'Login';
 $route['register'] = 'register';
+$route['login/logout'] = 'login/logout';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
