@@ -4,7 +4,7 @@
 <head>
     <title>Login</title>
     <!-- Add Bootstrap CSS link here -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 </head>
 
 <body>
@@ -14,11 +14,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="text-center">Login</h2>
-                            <?php if ($this->session->flashdata('login_error')): ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <?= $this->session->flashdata('login_error') ?>
-                                </div>
-                            <?php endif; ?>
+                        <?php if ($this->session->flashdata('login_error')) : ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?= $this->session->flashdata('login_error') ?>
+                            </div>
+                        <?php endif; ?>
 
                         <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                            <button type="submit" class="btn btn-lg btn-primary col-12 mt-3">Login</button>
                         </div>
 
                         <p class="text-center mt-3">Don't have an account? <a href="<?php echo base_url(); ?>register">Sign up here</a></p>

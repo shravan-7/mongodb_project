@@ -14,17 +14,17 @@ class UserController extends CI_Controller
 	}
 
 	function index()
-{
-    $userCursor = $this->User_model->get_user_list();
+	{
+		$userCursor = $this->User_model->get_user_list();
 
-    $users = $userCursor->toArray(); // Convert cursor to an array
+		$users = $userCursor->toArray(); // Convert cursor to an array
 
-    $data['users'] = $users;
+		$data['users'] = $users;
 
-    $this->load->view('templates/header');
-    $this->load->view('users', $data);
-    $this->load->view('templates/footer');
-}
+		$this->load->view('templates/header');
+		$this->load->view('users', $data);
+		$this->load->view('templates/footer');
+	}
 
 
 
@@ -48,14 +48,20 @@ class UserController extends CI_Controller
 					redirect('/');
 				} else {
 					$data['error'] = 'Error occurred during saving data';
+					$this->load->view('templates/header');
 					$this->load->view('user_create', $data);
+					$this->load->view('templates/footer');
 				}
 			} else {
 				$data['error'] = 'Error occurred during saving data: all fields are required';
+				$this->load->view('templates/header');
 				$this->load->view('user_create', $data);
+				$this->load->view('templates/footer');
 			}
 		} else {
+			$this->load->view('templates/header');
 			$this->load->view('user_create');
+			$this->load->view('templates/footer');
 		}
 	}
 
@@ -80,15 +86,21 @@ class UserController extends CI_Controller
 					redirect('/');
 				} else {
 					$data['error'] = 'Error occurred during updating data';
+					$this->load->view('templates/header');
 					$this->load->view('user_update', $data);
+					$this->load->view('templates/footer');
 				}
 			} else {
 				$data['error'] = 'Error occurred during saving data: all fields are mandatory';
+				$this->load->view('templates/header');
 				$this->load->view('user_update', $data);
+				$this->load->view('templates/footer');
 			}
 		} else {
 			$data['user'] = $this->User_model->get_user($_id);
+			$this->load->view('templates/header');
 			$this->load->view('user_update', $data);
+			$this->load->view('templates/footer');
 		}
 	}
 

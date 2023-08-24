@@ -4,7 +4,7 @@
 <head>
     <title>Registration</title>
     <!-- Add Bootstrap CSS link here -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 </head>
 
 <body>
@@ -44,8 +44,8 @@
                             <input type="password" id="confirm_password" name="confirm_password" class="form-control">
                         </div>
 
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-success btn-block">Register</button>
+                        <div class="text-center"> 
+                            <button type="submit" class="btn btn-primary col-12 mt-3" >Register</button>
                         </div>
 
                         <p class="text-center mt-3">Already have an account? <a href="<?php echo base_url(); ?>login">Login here</a></p>
