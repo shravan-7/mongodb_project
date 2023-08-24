@@ -111,22 +111,22 @@ class User_model extends CI_model
     }
     public function get_user_by_username($username)
     {
-    try {
-        $collectionName = 'user_registration';
-        $filter = ['username' => $username];
-        $query = new MongoDB\Driver\Query($filter);
+        try {
+            $collectionName = 'user_registration';
+            $filter = ['username' => $username];
+            $query = new MongoDB\Driver\Query($filter);
 
-        $result = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
+            $result = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
 
-        foreach ($result as $user) {
-            return $user; // Return the first matching user document
+            foreach ($result as $user) {
+                return $user; // Return the first matching user document
+            }
+
+            return null; // No user found
+        } catch (MongoDB\Driver\Exception\RuntimeException $ex) {
+            show_error('Error while fetching user: ' . $ex->getMessage(), 500);
         }
-
-        return null; // No user found
-    } catch (MongoDB\Driver\Exception\RuntimeException $ex) {
-        show_error('Error while fetching user: ' . $ex->getMessage(), 500);
     }
-}
 
     function register_user($name, $email, $username, $password)
     {
@@ -135,13 +135,13 @@ class User_model extends CI_model
                 'name' => $name,
                 'email' => $email,
                 'username' => $username,
-                'password' => $password 
+                'password' => $password
             );
 
             // Define the collection name for user registration
             $collectionName = 'user_registration';
 
-            
+
             $this->createCollectionIfNotExists($collectionName);
 
             $query = new MongoDB\Driver\BulkWrite();
@@ -160,34 +160,34 @@ class User_model extends CI_model
     }
 
     public function is_email_taken($email)
-{   
-    $collectionName = 'user_registration';
-    $filter = ['email' => $email];
-    $query = new MongoDB\Driver\Query($filter);
-    $cursor = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
+    {
+        $collectionName = 'user_registration';
+        $filter = ['email' => $email];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
 
-    $count = 0;
-    foreach ($cursor as $document) {
-        $count++;
+        $count = 0;
+        foreach ($cursor as $document) {
+            $count++;
+        }
+
+        return $count > 0;
     }
 
-    return $count > 0;
-}
+    public function is_username_taken($username)
+    {
+        $collectionName = 'user_registration';
+        $filter = ['username' => $username];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
 
-public function is_username_taken($username)
-{   
-    $collectionName = 'user_registration';
-    $filter = ['username' => $username];
-    $query = new MongoDB\Driver\Query($filter);
-    $cursor = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
+        $count = 0;
+        foreach ($cursor as $document) {
+            $count++;
+        }
 
-    $count = 0;
-    foreach ($cursor as $document) {
-        $count++;
+        return $count > 0;
     }
-
-    return $count > 0;
-}
 
 
     private function createCollectionIfNotExists($collectionName)

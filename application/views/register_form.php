@@ -35,27 +35,27 @@
 
                         <div class="form-group mb-4">
                             <label for="name">Your Name:</label>
-                            <input type="text" id="name" name="name" class="form-control" value="<?php echo set_value('name'); ?>">
+                            <input type="text" id="name" name="name" class="form-control" value="<?php echo set_value('name'); ?>" required>
                         </div>
 
                         <div class="form-group mb-4">
                             <label for="email">Your Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" value="<?php echo set_value('email'); ?>">
+                            <input type="email" id="email" name="email" class="form-control" value="<?php echo set_value('email'); ?>" required>
                         </div>
 
                         <div class="form-group mb-4">
                             <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" class="form-control" value="<?php echo set_value('username'); ?>">
+                            <input type="text" id="username" name="username" class="form-control" value="<?php echo set_value('username'); ?>" required>
                         </div>
 
                         <div class="form-group mb-4">
                             <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" class="form-control">
+                            <input type="password" id="password" name="password" class="form-control" required>
                         </div>
 
                         <div class="form-group mb-4">
                             <label for="confirm_password">Confirm Password:</label>
-                            <input type="password" id="confirm_password" name="confirm_password" class="form-control">
+                            <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
                         </div>
 
                         <div class="text-center">

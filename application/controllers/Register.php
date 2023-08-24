@@ -32,7 +32,7 @@ class Register extends CI_Controller
 
     if ($this->form_validation->run() === FALSE) {
         // Validation failed, reload the registration form with errors
-        $this->load->view('templates/header');
+            $this->load->view('templates/header');
             $this->load->view('register_form');
             $this->load->view('templates/footer');
     } else {
