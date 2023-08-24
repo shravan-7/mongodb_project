@@ -14,14 +14,23 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="text-center">Login</h2>
-                            <?php if ($this->session->flashdata('login_error')): ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <?= $this->session->flashdata('login_error') ?>
-                                </div>
-                            <?php endif; ?>
+                        <?php if ($this->session->flashdata('login_error')): ?>
+                            <div id="login-error" class="alert alert-danger" role="alert">
+                                <?= $this->session->flashdata('login_error') ?>
+                            </div>
+                        <?php endif; ?>
 
                         <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
+                        <script>
+                            // Hide the login error message after 5 seconds (5000 milliseconds)
+                            var loginError = document.getElementById('login-error');
+                            if (loginError) {
+                                setTimeout(function() {
+                                    loginError.style.display = 'none';
+                                }, 5000);
+                            }
+                        </script>
 
                         <?php echo form_open('login/login_user'); ?>
 

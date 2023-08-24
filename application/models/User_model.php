@@ -110,21 +110,22 @@ class User_model extends CI_model
     }
     public function get_user_by_username($username)
     {
-        try {
-            $filter = ['username' => $username];
-            $query = new MongoDB\Driver\Query($filter);
+    try {
+        $collectionName = 'user_registration';
+        $filter = ['username' => $username];
+        $query = new MongoDB\Driver\Query($filter);
 
-            $result = $this->conn->executeQuery($this->database . '.' . $this->collection, $query);
+        $result = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
 
-            foreach ($result as $user) {
-                return $user;
-            }
-
-            return null;
-        } catch (MongoDB\Driver\Exception\RuntimeException $ex) {
-            show_error('Error while fetching user: ' . $ex->getMessage(), 500);
+        foreach ($result as $user) {
+            return $user; // Return the first matching user document
         }
+
+        return null; // No user found
+    } catch (MongoDB\Driver\Exception\RuntimeException $ex) {
+        show_error('Error while fetching user: ' . $ex->getMessage(), 500);
     }
+}
 
     function register_user($name, $email, $username, $password)
     {
@@ -133,13 +134,13 @@ class User_model extends CI_model
                 'name' => $name,
                 'email' => $email,
                 'username' => $username,
-                'password' => $password  // You should properly hash and store the password securely
+                'password' => $password 
             );
 
             // Define the collection name for user registration
             $collectionName = 'user_registration';
 
-            // Check if the collection exists, and if not, create it
+            
             $this->createCollectionIfNotExists($collectionName);
 
             $query = new MongoDB\Driver\BulkWrite();
@@ -157,8 +158,37 @@ class User_model extends CI_model
         }
     }
 
-    // Function to create a collection if it doesn't exist
-    // Function to create a collection if it doesn't exist
+    public function is_email_taken($email)
+{   
+    $collectionName = 'user_registration';
+    $filter = ['email' => $email];
+    $query = new MongoDB\Driver\Query($filter);
+    $cursor = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
+
+    $count = 0;
+    foreach ($cursor as $document) {
+        $count++;
+    }
+
+    return $count > 0;
+}
+
+public function is_username_taken($username)
+{   
+    $collectionName = 'user_registration';
+    $filter = ['username' => $username];
+    $query = new MongoDB\Driver\Query($filter);
+    $cursor = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
+
+    $count = 0;
+    foreach ($cursor as $document) {
+        $count++;
+    }
+
+    return $count > 0;
+}
+
+
     private function createCollectionIfNotExists($collectionName)
     {
         $command = new MongoDB\Driver\Command([
@@ -168,7 +198,6 @@ class User_model extends CI_model
         try {
             $this->conn->executeCommand($this->database, $command);
         } catch (MongoDB\Driver\Exception\CommandException $ex) {
-            // The collection may already exist, so we can ignore this error
             if ($ex->getCode() !== 48) {
                 show_error('Error creating collection: ' . $ex->getMessage(), 500);
             }
