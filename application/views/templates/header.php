@@ -44,19 +44,15 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <?php if (!$this->session->userdata('logged_in')) : ?>
-                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>login">LOGIN</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>register">REGISTER</a></li>
+                        <?php if (!$this->session->userdata('user_id')) : ?>
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url('login/logout'); ?>">LOGIN</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url('login/logout'); ?>">REGISTER</a></li>
                         <?php endif; ?>
-                        <?php if ($this->session->userdata('logged_in')) : ?>
-                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>login">LOGOUT</a></li>
-
+                        
+                        <?php if ($this->session->userdata('user_id')) : ?>
+                            <li class="nav-item"><a class="nav-link" href="<?php echo base_url('login/logout'); ?>">LOGOUT</a></li>
                         <?php endif; ?>
-
-
                     </ul>
-
-
 
                 </div>
             </div>
