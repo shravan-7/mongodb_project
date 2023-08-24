@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 
 	<link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -16,7 +17,7 @@
 		<h1>User lists</h1>
 
 		<div>
-			<a href="<?php echo base_url('/usercontroller/create'); ?>" class="btn btn-success mt-4 mb-4">Create User</a>
+			<a href="<?php echo base_url('/usercontroller/create'); ?>" class="btn btn-success mt-4 mb-4"><i class="fas fa-plus">Create User</i></a>
 		</div>
 
 		<div id="body">
@@ -39,8 +40,8 @@
 								<td><?php echo isset($user->gender) ? $user->gender : 'N/A'; ?></td>
 								<td><?php echo isset($user->mobile) ? $user->mobile : 'N/A'; ?></td>
 								<td>
-									<a href="<?= site_url('/usercontroller/update/' . $user->_id) ?>" class="btn btn-info">Update</a>
-									<a href="<?= site_url('/usercontroller/delete/' . $user->_id) ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete this record?')">Delete</a>
+									<a href="<?= site_url('/usercontroller/update/' . $user->_id) ?>" class="btn btn-info"><i class="fas fa-edit">Update</i></a>
+									<a href="<?= site_url('/usercontroller/delete/' . $user->_id) ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete this record?')"><i class="fas fa-trash-alt">Delete</i></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
