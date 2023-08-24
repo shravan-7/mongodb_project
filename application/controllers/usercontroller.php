@@ -51,7 +51,7 @@ class UserController extends CI_Controller
 					$this->input->post('mobile')
 				);
 				if ($result === TRUE) {
-					redirect('/');
+					redirect('usercontroller/index');
 				} else {
 					$data['error'] = 'Error occurred during saving data';
 					$this->load->view('templates/header');
@@ -92,7 +92,7 @@ class UserController extends CI_Controller
 				);
 
 				if ($result === TRUE) {
-					redirect('/');
+					redirect('usercontroller/index');
 				} else {
 					$data['error'] = 'Error occurred during updating data';
 					$this->load->view('templates/header');
@@ -118,6 +118,6 @@ class UserController extends CI_Controller
 		if ($_id) {
 			$this->User_model->delete_user($_id);
 		}
-		redirect('/');
+		redirect('usercontroller/index');
 	}
 }

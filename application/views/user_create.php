@@ -72,7 +72,7 @@
 
                             <div class="mb-4 d-flex justify-content-between align-items-center">
                                 <input type="submit" name="submit" value="Submit" class="btn btn-success col-4" />
-                                <a href="<?php echo base_url(); ?>" class="btn btn-primary col-4 ">Back to Users</a>
+                                <a href="<?php echo base_url('usercontroller/index'); ?>" class="btn btn-primary col-4 ">Back to Users</a>
                             </div>
 
                             <?php echo form_close(); ?>
