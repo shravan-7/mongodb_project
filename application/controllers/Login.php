@@ -44,7 +44,7 @@ class Login extends CI_Controller
             if ($user && password_verify($password, $user->password)) {
                 // Set user session and redirect to user controller
                 $this->session->set_userdata('user_id', $user->_id);
-
+                $this->session->set_userdata('name', $user->name);
 
 
 
@@ -64,6 +64,7 @@ class Login extends CI_Controller
     {
         // Unset user data
         $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('name');
         $this->session->unset_userdata('username');
 
         // Set message
