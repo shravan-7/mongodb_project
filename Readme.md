@@ -42,8 +42,8 @@ This project is a PHP web application built using the CodeIgniter framework that
 6. Delete users from the list.
 
 ## Contributing
-https://github.com/shravan-7
-https://github.com/Bhavishjb
+@shravan-7
+@Bhavishjb
 
 ## License
 
