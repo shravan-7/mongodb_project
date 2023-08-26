@@ -42,8 +42,8 @@ This project is a PHP web application built using the CodeIgniter framework that
 6. Delete users from the list.
 
 ## Contributing
-
-If you'd like to contribute to this project, feel free to fork the repository, make your changes, and submit a pull request.
+https://github.com/shravan-7
+https://github.com/Bhavishjb
 
 ## License
 
@@ -54,7 +54,8 @@ This project is open-source and licensed under the MIT License. See the [LICENSE
 - CodeIgniter User Guide: https://codeigniter.com/docs
 - MongoDB PHP Library: https://docs.mongodb.com/php-library
 - Community Forums: http://forum.codeigniter.com/
-- GitHub Repository: https://github.com/yourusername/php-codeigniter-mongodb-crud
+- GitHub Repository: https://github.com/shravan-7/mongodb_project
+  									 https://github.com/Bhavishjb/User_mongodb_project
 
 ## Acknowledgement
 
