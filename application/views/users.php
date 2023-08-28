@@ -13,11 +13,11 @@
 
 <body>
 
-	<div>
+	<div style="margin:0px 50px;">
 		<h1>User lists</h1>
 
 		<div>
-			<a href="<?php echo base_url('/usercontroller/create'); ?>" class="btn btn-success mt-4 mb-4"><i class="fas fa-plus">Create User</i></a>
+			<a href="<?php echo base_url('/usercontroller/create'); ?>" class="btn btn-success mt-4  mb-4"><i class="fas fa-plus"></i> Create User</a>
 		</div>
 
 		<div id="body">
@@ -40,8 +40,8 @@
 								<td><?php echo isset($user->gender) ? $user->gender : 'N/A'; ?></td>
 								<td><?php echo isset($user->mobile) ? $user->mobile : 'N/A'; ?></td>
 								<td>
-									<a href="<?= site_url('/usercontroller/update/' . $user->_id) ?>" class="btn btn-info"><i class="fas fa-edit">Update</i></a>
-									<a href="<?= site_url('/usercontroller/delete/' . $user->_id) ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete this record?')"><i class="fas fa-trash-alt">Delete</i></a>
+									<a href="<?= site_url('/usercontroller/update/' . $user->_id) ?>" class="btn btn-info"><i class="fas fa-edit"></i> Update</a>
+									<a href="<?= site_url('/usercontroller/delete/' . $user->_id) ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete this record?')"><i class="fas fa-trash-alt"></i> Delete</a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
