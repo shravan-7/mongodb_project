@@ -6,20 +6,14 @@
 <head>
     <meta charset="utf-8">
     <title>Update User</title>
-
-    <!-- Include the Bootstrap CSS link -->
     <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 
     <style>
-        /* Center content vertically and horizontally */
-
-
-        /* Adjust the max-width of the card container */
+       
         .card-container {
             max-width: 400px;
         }
 
-        /* Increase the width of the input fields */
         .form-control-custom {
             width: 100%;
         }
@@ -33,7 +27,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="text-center">Update User Details</h1>
-
                         <div id="body">
                             <?php
                             if (isset($error)) {

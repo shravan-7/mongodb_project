@@ -15,7 +15,6 @@ class Login extends CI_Controller
     {
         // Load your login form view here
 
-
         $this->load->view('templates/header');
         $this->load->view('login_form');
         $this->load->view('templates/footer');
@@ -40,16 +39,10 @@ class Login extends CI_Controller
             // Retrieve user from MongoDB
             $user = $this->user_model->get_user_by_username($username);
 
-
             if ($user && password_verify($password, $user->password)) {
                 // Set user session and redirect to user controller
                 $this->session->set_userdata('user_id', $user->_id);
                 $this->session->set_userdata('name', $user->name);
-
-
-
-
-
                 $this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
                 redirect("usercontroller/index");

@@ -3,7 +3,6 @@
 
 <head>
     <title>Login</title>
-    <!-- Add Bootstrap CSS link here -->
     <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 </head>
 
@@ -23,7 +22,7 @@
                         <?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
                         <script>
-                            // Hide the login error message after 5 seconds (5000 milliseconds)
+                            // Hide the login error message after 5 seconds 
                             var loginError = document.getElementById('login-error');
                             if (loginError) {
                                 setTimeout(function() {

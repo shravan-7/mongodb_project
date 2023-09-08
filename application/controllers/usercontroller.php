@@ -2,7 +2,6 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
 class UserController extends CI_Controller
 {
 
@@ -28,10 +27,6 @@ class UserController extends CI_Controller
 		$this->load->view('users', $data);
 		$this->load->view('templates/footer');
 	}
-
-
-
-
 	public function create()
 	{
 		if (!$this->session->userdata('user_id')) {
@@ -40,8 +35,8 @@ class UserController extends CI_Controller
 		if ($this->input->post('submit')) {
 			$this->form_validation->set_rules('name', 'Full Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|valid_email|required');
-			$this->form_validation->set_rules('gender', 'Gender', 'required'); // Add validation rule for gender
-			$this->form_validation->set_rules('mobile', 'Mobile Number', 'trim|required|numeric'); // Add validation rule for mobile number
+			$this->form_validation->set_rules('gender', 'Gender', 'required'); 
+			$this->form_validation->set_rules('mobile', 'Mobile Number', 'trim|required|numeric'); 
 
 			if ($this->form_validation->run() !== FALSE) {
 				$result = $this->User_model->create_user(
@@ -51,6 +46,7 @@ class UserController extends CI_Controller
 					$this->input->post('mobile')
 				);
 				if ($result === TRUE) {
+
 					redirect('usercontroller/index');
 				} else {
 					$data['error'] = 'Error occurred during saving data';
@@ -87,8 +83,8 @@ class UserController extends CI_Controller
 					$_id,
 					$this->input->post('name'),
 					$this->input->post('email'),
-					$this->input->post('gender'), // Add gender
-					$this->input->post('mobile') // Add mobile
+					$this->input->post('gender'), 
+					$this->input->post('mobile') 
 				);
 
 				if ($result === TRUE) {

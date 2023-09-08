@@ -4,20 +4,13 @@
 <head>
     <meta charset="utf-8">
     <title>Create User</title>
-
-    <!-- Include the Bootstrap CSS link -->
     <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
 
     <style>
-        /* Center content vertically and horizontally */
-
-
-        /* Adjust the max-width of the card container */
+       
         .card-container {
             max-width: 400px;
         }
-
-        /* Increase the width of the input fields */
         .form-control-custom {
             width: 100%;
         }
@@ -31,7 +24,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="text-center">Create User</h1>
-
                         <div id="body">
                             <?php
                             if (isset($error)) {
@@ -40,7 +32,6 @@
                                 echo validation_errors();
                             }
                             ?>
-
                             <?php
                             $attributes = array('name' => 'form', 'id' => 'form', 'class' => 'form');
                             echo form_open($this->uri->uri_string(), $attributes);
