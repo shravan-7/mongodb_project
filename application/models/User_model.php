@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_model
 {
-
     private $database = 'UserInfo';
     private $collection = 'user';
     private $conn;
@@ -55,8 +54,8 @@ class User_model extends CI_model
             $user = array(
                 'name' => $name,
                 'email' => $email,
-                'gender' => $gender, // Add 'gender'
-                'mobile' => $mobile // Add 'mobile'
+                'gender' => $gender, 
+                'mobile' => $mobile 
             );
 
             $query = new MongoDB\Driver\BulkWrite();
@@ -119,10 +118,10 @@ class User_model extends CI_model
             $result = $this->conn->executeQuery($this->database . '.' . $collectionName, $query);
 
             foreach ($result as $user) {
-                return $user; // Return the first matching user document
+                return $user;  // Return the first matching user document
             }
 
-            return null; // No user found
+            return null;  // No user found
         } catch (MongoDB\Driver\Exception\RuntimeException $ex) {
             show_error('Error while fetching user: ' . $ex->getMessage(), 500);
         }
